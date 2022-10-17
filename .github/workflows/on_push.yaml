@@ -1,0 +1,29 @@
+name: "All the KiCad-Actions"
+
+on:
+  push:
+    paths:
+      - '*.kicad_sch'
+      - '*.kicad_pcb'
+      - '*.kibot.yaml'
+      - '.github/workflows/on_push.yaml'
+
+jobs:
+  quick:
+    name: "Quick Start (action)"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get repo
+        uses: action/checkout@v3
+
+      - name: Run KiBot
+        uses: INTI-CMNB/KiBot@v2_k6
+        with:
+          quickstart: YES
+
+      - name: Upload results
+        uses: actions/upload-artifact@v2
+        with:
+          name: Automatic_outputs
+          path: Generated
