@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Get repo
-        uses: action/checkout@v3
+        uses: actions/checkout@v3
 
       - name: Run KiBot
         uses: INTI-CMNB/KiBot@v2_k6
